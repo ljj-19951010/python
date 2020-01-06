@@ -1,0 +1,83 @@
+
+一、什么是turtle?
+海龟绘图很适合用来引导孩子学习编程。 最初来自于 Wally Feurzeig, Seymour Papert 和 Cynthia Solomon 于 1967 年所创造的 Logo 编程语言。
+官方网址：https://docs.python.org/zh-cn/3/library/turtle.html
+
+
+二、基本功能
+turtle.forward(a)      向前移动a元素。或 turtle.fd(a)
+turtle.backward(a)      向画笔相反方向移动a
+turtle.right(a)     顺时针移动a度
+turtle.left(a)      逆时针移动a度
+turtle.pendown()      放下画笔，绘制图形
+turtle.penup()      抬起画笔，不绘制图形
+turtle.circle(r,d)       画圆。半径为r,(正负).     
+turtle.goto(x,y)      将画笔移动到（x,y）坐标位置
+turtle.setx()     设置当前x轴的位置
+turtle.sety()
+turtle.setheading(a)      设置海龟的朝向为a度
+turtle.home()     设置当前画笔为原点，朝向东
+turtle.dot(r)     绘制一个指定直径和颜色的圆点
+turtle.pensize()      设置海龟（画笔）的粗细
+turtle.color(a,b)     设置颜色（a画笔,b填充）
+turtle.begin_fill()     开始绘制图形前使用。开始填充
+turtle.end_fill()     结束填充
+turtle.reset()      重置海龟设置所有变量为默认值
+turtle.hideturtle()     设置海龟不可见
+turtle.showturtle()     设置海龟可见
+turtle.done()     运行完成，不关闭窗口
+.........
+.........
+.........
+
+
+
+三、事例
+
+
+1.圆
+
+
+#绘制一个半径为60，周长是360的圆
+import turtle
+turtle.circle(60,360)
+
+
+2.正方形
+
+
+#绘制一个边长200，角度为90的四边形
+import turtle
+for i in range(4):
+    turtle.fd(200)
+    turtle.left(90)
+ turtle.done()
+ 
+ 
+ 
+ 3.等边三角形
+ 
+ 
+ # 绘制一个长100，角度为60的三角形
+ import turtle
+ for i in range(3):
+    turtle.fd(100)
+    turtle.left(60)
+ turtle.done()
+ 
+ 
+ 
+ 4.心♥
+ 
+ import turtle as t
+ t.color('red','red')
+ t.pensize(2)
+ t.begin_fill()
+ t.left(50)
+ t.fd(220)
+ t.circle(80,220)
+ t.right(180)
+ t.circle(80,220)
+ t.fd(220)
+ t.end_fill()
+ t.done()
