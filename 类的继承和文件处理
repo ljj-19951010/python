@@ -1,0 +1,40 @@
+#打开文件（没有自动创建）
+f1 = open('PY301-1.txt','w',encoding='utf-8')
+class Horse():              # 定义马 类
+    def __init__(self,name,age,category,gender):
+        self.name = name
+        self.age = age
+        self.category = category
+        self.gender = gender
+        self.star_speed = 0         # 设置初始速度
+    def get_descriptive(self,):             # 描述马
+        text ='这是一匹' +self.name+'。\n年龄是'+self.age+'，品种是'+self.category+'。\n他是'+ self.gender
+        f1.write(text + '\n')
+
+    def update_speed(self,new_speed):       # 升级速度（不断变化）
+        if new_speed > self.star_speed:
+            self.star_speed = new_speed
+        else:
+            print('这个动物跑不动了。')
+        f1.write('这个' + self.name +'的速度是' + str(self.star_speed) + 'km/h\n')        #写入文件
+
+class Camel(Horse):         #继承父类，定义一个子类骆驼
+    def __init__(self,name,age,category,gender):
+        super().__init__(name,age,category,gender)          # 继承
+        self.num = 2        # 定义驼峰值
+    def canmel_num(self):
+        hump ='这个骆驼是'+str(self.name)+'驼峰数量是'+str(self.num)
+        f1.write(hump + '\n')               # 写入文件
+
+#父类调用
+my_horse=Horse('汗血宝马','16','皇族','公的')
+my_horse.get_descriptive()
+my_horse.update_speed(40)
+
+# 子类调用
+my_horse2 = Camel('双峰骆驼','20','平民','母的')
+my_horse2.canmel_num()
+my_horse2.update_speed(40)
+
+# 文件保存并关闭
+f1.close()
