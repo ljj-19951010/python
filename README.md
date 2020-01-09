@@ -1,9 +1,9 @@
 # python
 <html>
 <head>
-<title>
-  Learning for NCRE.(National Computer Rank Examination.)
-</title>
+
+  Learning for NCRE.(National Computer Rank Examination.
+
 </head>
 
 <p>
