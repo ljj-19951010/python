@@ -1,0 +1,151 @@
+#-*-coding:GBK -*-
+import turtle as t
+
+t.screensize(500,500)
+t.pensize(5)
+t.color('black')
+# 狗头
+t.circle(20,80)
+t.circle(200,30)
+t.circle(30,60)
+t.circle(200,29.5)
+t.circle(20,60)
+t.circle(-150,22)
+t.circle(-50,10)
+t.circle(50,70)
+
+# 先确定鼻子的大概位置
+x_nose = t.xcor()
+y_nose = t.ycor()
+t.circle(30,62)
+t.circle(200,15)
+
+# 鼻子
+t.penup()
+t.goto(x_nose,y_nose+25)
+t.seth(90)
+t.pendown()
+t.begin_fill()
+t.circle(8)
+t.end_fill()
+
+
+# 眼睛
+t.penup()
+t.goto(x_nose+48,y_nose+55)
+t.seth(90)
+t.pendown()
+t.begin_fill()
+t.circle(8)
+t.end_fill()
+
+# 耳朵
+t.penup()
+t.goto(x_nose+100,y_nose+110)
+t.seth(182)
+t.pendown()
+t.circle(15,45)
+t.color('black')
+t.circle(10,15)
+t.circle(90,70)
+t.circle(25,110)
+t.rt(4)
+t.circle(90,70)
+t.circle(10,15)
+t.color('#444444')
+t.circle(15,45)
+
+# 身体
+
+t.pu()
+t.color('black')
+t.goto(x_nose+90,y_nose-30)
+t.seth(-130)
+t.pd()
+
+t.circle(250,28)
+t.circle(10,140)
+t.circle(-250,25)
+t.circle(-200,25)
+t.circle(-50,85)
+t.circle(8,145)
+t.circle(90,45)
+t.circle(550,5)
+
+#尾巴
+t.seth(0)
+t.circle(60,85)
+t.circle(40,65)
+t.circle(40,60)
+
+t.lt(150)
+t.circle(-40,90)
+t.circle(-25,100)
+
+t.lt(5)
+t.fd(20)
+
+t.circle(10,60)
+
+
+# 背
+t.rt(80)
+t.circle(200,35)
+
+
+# 项圈
+t.pensize(20)
+t.color('#F03c3F')
+t.lt(10)
+t.circle(-200,25)
+
+
+
+# 爱心铃铛
+t.pu()
+t.fd(18)
+t.lt(90)
+t.fd(18)
+t.pensize(2)
+t.seth(35)
+t.color('#FDAF17')
+t.begin_fill()
+t.lt(135)
+t.fd(6)
+t.right(180)
+t.circle(6,-180)
+
+t.backward(8)
+t.right(90)
+t.fd(6)
+t.circle(-6,180)
+t.fd(15)
+t.end_fill()
+
+
+# 前小腿
+t.pensize(5)
+t.pu()
+t.color('black')
+t.goto(x_nose+100,y_nose-125)
+t.pd()
+
+t.seth(-50)
+t.fd(25)
+t.circle(10,150)
+t.fd(25)
+
+
+# 后腿
+t.pensize(4)
+t.pu()
+t.goto(x_nose+314,y_nose-125)
+t.pd()
+
+t.seth(-95)
+t.fd(25)
+t.circle(-5,150)
+t.fd(2)
+
+t.hideturtle()
+t.done()
