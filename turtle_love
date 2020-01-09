@@ -1,0 +1,17 @@
+import turtle as t
+t.color('red','red')
+t.pensize(2)
+t.begin_fill()
+
+#右半边
+t.left(50)
+t.fd(220)
+t.circle(80,220)
+#左半边
+t.right(180)
+t.circle(80,220)
+t.fd(220)
+
+t.end_fill()
+t.hideturtle()
+t.done()
