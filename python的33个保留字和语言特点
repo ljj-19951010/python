@@ -1,0 +1,25 @@
+1.33个保留字
+and  as assert  async await  break  class  continue  def  del   elif     else   except  False   for   finally  from   global  if    import
+in  is  lambda  None   nonlocal   not  or  pass   raise   return  True  try  while   with  yield
+
+
+2.源程序的书写风格
+--python之禅
+优美胜于丑陋
+明了胜于隐晦
+简洁胜于复杂
+复杂胜于凌乱
+扁平胜于嵌套
+间隔胜于紧凑
+可读性很重要
+
+3.语言特点
+--python是通用语言，具有通用性。
+--python语法简洁
+--python生态高产
+此外还有如下特点：
+平台无关。可以跨操作系统运行。
+强制可读。缩进表达的程序框架是语法的一部分。
+支持中文。使用Unicode编码，支持中文字符。
+模式多样。支持语句、函数、面向对象等多种编程模式。
+类库便捷。通过使用pip安装类库，使用import引入类库。
