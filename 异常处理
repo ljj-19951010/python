@@ -1,0 +1,94 @@
+# 异常处理
+'''
+    try:
+    	主逻辑
+    except Exception as e:  捕捉异常
+        异常输出
+'''
+
+# ——————————————————————————————————————————————————
+
+# 常用的异常有ValueError , keyError , IndexError,TypeError等等
+'''
+try:
+	age = input('>>1:')
+	int(age)
+	lis = []
+	lis[1]
+except ValueError as e:
+	 print(e)
+'''
+
+
+# 万能异常 Exception
+
+'''
+try:
+	age = input('age>>')
+	int(age)
+
+
+	lis = ['A','b',44]
+	lis[5]
+except Exception as e:
+	 print('>>',e)
+
+'''
+
+#——————————————————————————————————————————————
+
+# 异常处理的其他内容
+
+# 继续执行其他代码
+'''
+while True:
+	try:
+		age = input('Please input:')
+		int(age)
+		break
+	except:
+	print('请重新输入！')
+print('.....\n继续其他程序。')
+'''
+
+
+# 其他的异常机构
+
+# else 用于try里没有异常，则只执行else
+'''
+try:
+	age = input('>>1:')
+	int(age)
+	
+except ValueError as e:
+	 print(e)
+else:
+	print('try块内没有异常')
+'''
+
+
+# finally 无论有没有异常都执行
+'''
+try:
+	age = input('>>1:')
+	int(age)
+	
+except ValueError as e:
+	 print(e)
+else:
+	print('try块内没有异常.')
+finally:
+	print('......\n无论有没有异常都执行.')
+'''
+
+# ————————————————————————————————————————————————————
+
+# 断言（判断）
+'''
+ def test():
+ 	res = 1
+ 	return 1
+
+ assert res == 1
+ print('如果res=1继续处理其他代码')
+ '''
