@@ -1,0 +1,154 @@
+git分布式版本控制系统
+一. git是什么
+git是目前世界上最先进的分布式版本控制系统，没有之一
+
+举例：
+
+	    比如你的电脑里有一个word文件，需要每次修改，但是你又不想删掉旧的文件，所以只能每次都另存为，存了好多文件，这时候又有同事在word文件中修改了某一项，你想与原来的文件做对比，是不是超级麻烦，如果改动很小你需要费很长时间才能找到吧，这时候就需要用git了
+
+集中式和分布式控制系统
+
+    cvs和svn都是集中式控制系统；
+
+	集中式控制系统，版本库都是放在中央服务器，每次运行时都需要其他电脑从中央服务器拿到库，然后编辑完再放回去；比较麻烦，且需要联网，如果库比较大，还特别慢；
+
+	分布式控制系统，相当于每个人的电脑上都有一个完整的版本库，所以不需要联网，只要在自己的个人电脑上操作完成与其他人交换就可以了，为了方便也可以把一台电脑作为类似中央服务器的，但他可以只是用来方便交换而已，有他没他无所谓。
+
+二. 安装git
+windows安装
+
+直接官网下载安装包，默认位置安装即可，或者指定安装目录
+
+linux安装
+
+centos/redhat
+
+sudo yum install git
+ubuntu
+
+sudo apt-get install git
+mac安装
+
+一种是安装homebrew，然后用它安装git
+
+第二种是xcode，在设置的download中安装
+
+三.创建版本库
+1. 概念
+版本库即仓库(repository)，可以理解为一个目录，这个目录中的所有文件都被git管理起来，包括增删改查，git都能追踪，也可以在某个时刻还原
+
+mkdir my_repo   # 首先选好位置建一个文件夹;不要包含中文名字
+cd my_repo  # 可以用pwd显示当前所在目录
+git init    # 把当前目录变成git可管理的仓库,细心的人会发现多了个.git的目录，没事不要动否则会影响仓库
+注意：因为文本是有编码的强烈建议使用标准的UTF8编码
+
+2.  添加用户
+一定要先添加用户，不然不知道谁在用库
+
+git config --global user.name "ljj"
+git config --global user.email "123456@qq.com"
+3.  添加仓库
+创建一个readme.txt文件
+
+vim readme.txt
+# 自行在里面添加内容
+git add readme.txt  #把文件添加到仓库
+git commit -m "write a readme file"     #将文件提交到仓库，-m是写备注告诉其他人说明修改过，一定要加
+​
+当然也可以添加多个文件，例如
+
+$ git add file1.txt
+$ git add file2.txt file3.txt
+$ git commit -m "add 3 files."
+4. 修改
+比如我们现在修改一下readme.txt
+
+vim readme.txt
+# 我修改了此内容: Git is a distributed version control system.
+git status      # 查看当前仓库的状态，修改过的话会有提示
+git diff        # difference就是查看与原来文件不同的地方，可以查看改了什么地方
+git add readme.txt      # 提交，这个时候也可以看一下仓库状态（这时还没完全提交到仓库）
+git commit -m "add distributed"   #提交到仓库，这时查看仓库状态，会告诉你 working tree clean
+注意： git status记得随时查看仓库状态，以免出现其它问题
+
+5. 查看修改记录
+如果一个文件被修改了很多次，不管是否是一个人都可以通过查看日志的方式
+
+git log         # 查看历史记录
+这时会在屏幕上看到一堆的记录，如果嫌信息太多可以加上以下
+
+git log --pretty=oneline
+提示：commit表示的是版本号，他是SHA1计算出来的一个数字，每个正在编辑仓库的用户都是不一样的，否则就冲突了，每提交一个版本，git就会把他们串成一个时间线，如果用git可视化工具，可以清晰的看到提交历史的时间线。
+
+6. 还原
+回退上一个修改的版本可以使这个命令
+
+git reset --hard HEAD^
+cat readme.txt      # 查看内容
+当然如果刚才的git log --pretty=oneline 显示信息的窗口没有关，就可以指定回到哪个版本
+
+git reset --hard 1094a      # commit的id没必要写完整，只需要写前几位就可以了，但是不要写的太少以免有重复的id号
+当然git是卖后悔药的，如果你找不到commit id号怎么办，又想回退到刚才的版本？
+
+git reflog      # 查看每一次的记录
+这个命令是可以查看你操作的每一次命令的，同样会显示出每个版本的commit id号，之后再还原到指定版本即可
+
+7. 工作区和暂存区
+		比如新建的文件夹my_repo就相当于一个工作区，而工作区中的.git隐藏目录 就是版本库，在版本库中存放了很多东西，最重要的stage就是暂存区也可以叫index；git也会自动创建一个分支master以及指向master的指针HEAD；
+
+在我们将文件添加到git版本库时，有两个步骤
+
+git add就是把文件添加到暂存区index
+
+git commit就是把暂存区的所有内容提交到当前分支
+
+8. 管理修改
+	修改就如：新增一行内容，或者删除内容，更改内容等操作，为什么git管理的是修改，而不是文件呢？
+
+	
+
+# 查看状态
+vim readme.txt      # 比如修改readme.txt内容
+git add readme.txt      # 添加到暂存区
+vim readme.txt          # 再次修改
+git commit -m "change contents"     # 提交到分支
+git status      # 查看状态
+这时候你会发现，第二次修改没有被提交，因为每次修改需要先提交到暂存区，commit从暂存区将所有的内容提交到分支的，所以第二次修改没有提交成功
+
+修改 ----- git add ----第二次修改 ----- git add --- git commit  所以说git提交的是修改，而不是文件
+
+9. 撤销修改
+		如果你修改了一个文件的内容，想要撤回
+
+		第一种修改还没有放到 暂存区
+
+vim readme.txt      # 编辑文件，添加内容或修改内容
+git checkout -- readme.txt      # 撤销工作区的全部修改
+		第二种修改添加到了暂存区
+
+ 丢弃工作区的修改
+vim readme.txt      # 编辑文件
+git add readme.txt      # 添加到暂存区
+git reset HEAD readme.txt   # 将暂存区的修改 撤回工作区
+git checkout -- readme.txt    # 丢弃工作区的修改
+10.撤销删除
+直接从当前工作区删除
+
+rm test.txt     # 直接手动删除
+git status      # 查看状态，会提示test.txt被删除
+git checkout -- test.txt        # 在工作区恢复 暂存区的版本
+​
+如果要从版本库中恢复删除的文件
+
+git rm test.txt     # 删除文件：相当于删除目录中的文件，并将删除的操作 提交到暂存区
+git commit -m "remove test.txt"     # 提交删除修改
+git reset --hard HEAD^          # 撤销删除
+第二种
+
+撤销删除
+rm test.txt     # 手动删除
+git add test.txt        # 添加删除命令到暂存区
+git commit -m "remove file"         # 提交删除，从版本库删除
+git reset --hard HEAD^      # 撤销删除
+
+
